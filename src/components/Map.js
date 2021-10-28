@@ -13,6 +13,10 @@ function Map(props) {
       zoomControl={false}
       touchZoom={false}
       style={{ height: "600px", width: "600px" }}
+      //disabling the ability to drag the map and zoom
+      dragging= {false}
+      zoomDelta={0}
+      keyboard={false}
     >
       <TileLayer
         url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
