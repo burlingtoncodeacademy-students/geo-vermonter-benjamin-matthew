@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-
+import StartButton from "./components/StartButton";
 import Map from "./components/Map";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   const [randomLocation, setRandomLocation] = useState([]);
   const [score, setScore] = useState("100");
 
-  const [startingLatLon, setStartingLatLon] = useState(center);
+  const [startingLatLon, setStartingLatLon] = useState([0, 0]);
   const [latitude, setLatitude] = useState(startingLatLon[0]);
   const [longitude, setLongitude] = useState(startingLatLon[1]);
 
@@ -51,8 +51,13 @@ function App() {
             </div>
           </div>
           <div className="interactiveButtons">
-            <button>Start Game</button>
-
+            <StartButton
+              startGame={startGame}
+              setStartGame={setStartGame}
+              setLatitude={setLatitude}
+              setLongitude={setLongitude}
+              setStartingLatLon={setStartingLatLon}
+            />
             <button>Guess</button>
             <button>Quit Game</button>
           </div>
