@@ -1,23 +1,23 @@
 import { divIcon } from "leaflet";
 import React, { useState, useEffect } from "react";
+import borderData from "../data/border";
 
 function StartButton(props) {
-  console.log(props.startGame);
+  // console.log(props.startGame);
   // if (!props.startGame) {
   //   return <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>;
   // }
 
-  // function randomLatGenerator() {
-  //   props.setLatitude(Math.random() * (45.005419 - 42.730315) + 42.730315);
-  // }
   useEffect(() => {
+    // if (!props.startGame) {
+    //   return (
+    //     <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>
+    //   );
+    // }
+
     let newLatitude = Math.random() * (45.005419 - 42.730315) + 42.730315;
 
     props.setLatitude(newLatitude);
-
-    // function randomLonGenerator() {
-    //   props.setLongitude(Math.random() * (-71.510225 - -73.35218) + -73.35218);
-    // }
 
     let newLongitude = Math.random() * (-71.510225 - -73.35218) + -73.35218;
     props.setLongitude(newLongitude);
@@ -35,15 +35,13 @@ function StartButton(props) {
     console.log(newStartingLocation);
   }, []);
 
-  if (!props.startGame) {
-    return (
-      <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>
-    );
-  }
-
   // props.setStartGame(false);
 
-  return <button disabled>Start Game</button>;
+  return !props.startGame ? (
+    <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>
+  ) : (
+    <button disabled>Start Game</button>
+  );
 }
 
 export default StartButton;
