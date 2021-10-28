@@ -27,4 +27,9 @@ function StartGameModal(props) {
   );
 }
 
-export default StartGameModal
+export default StartGameModal;
+
+// will use for guess functionality
+{
+  /* <StartGameModal closeModal={(evt) => setStartGame(false)} startGame={startGame} /> */
+}

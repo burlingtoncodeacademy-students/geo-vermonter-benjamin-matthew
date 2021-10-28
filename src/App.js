@@ -1,25 +1,18 @@
 import "./App.css";
-import { useState , useEffect } from "react";
-import StartGameModal from './components/StartGameModal'
+import { useState, useEffect } from "react";
+
 import Map from "./components/Map";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
-  const [randomLocation, setRandomLocation] = useState([])
-  const [score, setScore] = useState('100')
+  const [randomLocation, setRandomLocation] = useState([]);
+  const [score, setScore] = useState("100");
 
-  const [startingLatLon, setStartingLatLon] = useState(center)
-  const [latitude, setLatitude] = useState(startingLatLon[0])
-  const [longitude, setLongitude] = useState(startingLatLon[1])
+  const [startingLatLon, setStartingLatLon] = useState(center);
+  const [latitude, setLatitude] = useState(startingLatLon[0]);
+  const [longitude, setLongitude] = useState(startingLatLon[1]);
 
-  const[startGame, setStartGame] = useState(false)
-  // function randomLatGenerator () {
-  //   return (Math.random() * (45.005419 - 42.730315) + 1) + 42.730315
-  // }
-
-  // function randomLonGenerator () {
-  //   return Math.random() * (-71.510225 - -73.35218) + 1) + -73.35218
-  // }
+  const [startGame, setStartGame] = useState(false);
 
   //useeffect to fetch the information from the Nominatim API
 
@@ -42,24 +35,24 @@ function App() {
           <div className="movementControl">
             <div className="northSouth">
               <button>
-                North <i className ='arrow' id="north" />
+                North <i className="arrow" id="north" />
               </button>
               <div className="eastWest">
                 <button>
-                  <i className='arrow' id="west" /> West 
+                  <i className="arrow" id="west" /> West
                 </button>
                 <button>
-                  East <i className ='arrow' id="east" />
+                  East <i className="arrow" id="east" />
                 </button>
               </div>
               <button>
-                South <i className='arrow' id="south" />
+                South <i className="arrow" id="south" />
               </button>
             </div>
           </div>
           <div className="interactiveButtons">
-            <button onClick={(evt) => setStartGame(true)}>Start Game</button>
-            <StartGameModal closeModal={(evt) => setStartGame(false)} startGame={startGame} />
+            <button>Start Game</button>
+
             <button>Guess</button>
             <button>Quit Game</button>
           </div>
