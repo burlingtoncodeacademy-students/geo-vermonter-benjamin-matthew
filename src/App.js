@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import StartButton from "./components/StartButton";
 import Map from "./components/Map";
+import borderData from "./data/border";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -16,6 +17,8 @@ function App() {
   //useeffect to fetch the information from the Nominatim API
   //put fetch in guess component
 
+  let borderDataPassed = borderData
+  console.log(borderDataPassed)
   return (
     <div>
       <header className="gameHeader">
@@ -57,6 +60,7 @@ function App() {
               setLatitude={setLatitude}
               setLongitude={setLongitude}
               setStartingLatLon={setStartingLatLon}
+              borderDataPassed={borderDataPassed}
             />
             <button>Guess</button>
             <button>Quit Game</button>
@@ -64,6 +68,7 @@ function App() {
         </div>
       </div>
     </div>
+    
   );
 }
 
