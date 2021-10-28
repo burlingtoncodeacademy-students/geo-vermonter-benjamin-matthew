@@ -5,7 +5,6 @@ import Map from "./components/Map";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
-  const [randomLocation, setRandomLocation] = useState([]);
   const [score, setScore] = useState("100");
 
   const [startingLatLon, setStartingLatLon] = useState([0, 0]);
@@ -15,6 +14,7 @@ function App() {
   const [startGame, setStartGame] = useState(false);
 
   //useeffect to fetch the information from the Nominatim API
+  //put fetch in guess component
 
   return (
     <div>

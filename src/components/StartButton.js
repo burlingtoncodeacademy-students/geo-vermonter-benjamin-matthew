@@ -33,6 +33,8 @@ function StartButton(props) {
     // }
 
     console.log(newStartingLocation);
+
+    
   }, []);
 
   // props.setStartGame(false);
