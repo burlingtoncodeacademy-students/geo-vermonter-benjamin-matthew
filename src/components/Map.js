@@ -24,8 +24,6 @@ function Map(props) {
     coords[0],
   ]);
 
-  // const map = useMap()
-
   return (
     <MapContainer
       center={props.center}

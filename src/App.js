@@ -63,9 +63,9 @@ function App() {
               setCenter={setCenter}
               map={map}
             />
-            <button>Guess</button>
+            <button id='guessButton'>Guess</button>
 
-            <button>Quit Game</button>
+            <button id='quitButton'>Quit Game</button>
           </div>
         </div>
       </div>
