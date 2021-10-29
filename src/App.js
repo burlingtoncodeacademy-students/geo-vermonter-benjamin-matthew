@@ -4,6 +4,10 @@ import StartButton from "./components/StartButton";
 import Map from "./components/Map";
 import borderData from "./data/border";
 import { ZoomControl } from "react-leaflet";
+import NorthButton from "./components/NorthButton";
+import WestButton from "./components/WestButton";
+import EastButton from "./components/EastButton";
+import SouthButton from "./components/SouthButton";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -38,36 +42,12 @@ function App() {
         <div className="userInputs">
           <div className="movementControl">
             <div className="northSouth">
-              <button
-                onClick={() =>
-                  setLatitude((prevLatitude) => prevLatitude + 0.002) 
-                }
-              >
-                North <i className="arrow" id="north" />
-              </button>
+              <NorthButton setLatitude={setLatitude} setScore={setScore} />
               <div className="eastWest">
-                <button
-                  onClick={() =>
-                    setLongitude((prevLongitude) => prevLongitude + 0.002)
-                  }
-                >
-                  <i className="arrow" id="west" /> West
-                </button>
-                <button
-                  onClick={() =>
-                    setLongitude((prevLongitude) => prevLongitude - 0.002)
-                  }
-                >
-                  East <i className="arrow" id="east" />
-                </button>
+                <WestButton setLongitude={setLongitude} setScore={setScore} />
+                <EastButton setLongitude={setLongitude} setScore={setScore} />
               </div>
-              <button
-                onClick={() =>
-                  setLatitude((prevLatitude) => prevLatitude - 0.002)
-                }
-              >
-                South <i className="arrow" id="south" />
-              </button>
+              <SouthButton setLatitude={setLatitude} setScore={setScore} />
             </div>
           </div>
           <div className="interactiveButtons">
