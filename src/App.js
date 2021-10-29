@@ -43,7 +43,7 @@ function App() {
         <div className="userInputs">
           <div className="movementControl">
             <div className="northSouth">
-              <NorthButton setLatitude={setLatitude} setScore={setScore} />
+              <NorthButton setLatitude={setLatitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
               <div className="eastWest">
                 <WestButton setLongitude={setLongitude} setScore={setScore} />
                 <EastButton setLongitude={setLongitude} setScore={setScore} />

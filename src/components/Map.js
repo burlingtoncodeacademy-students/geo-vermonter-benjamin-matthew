@@ -10,7 +10,6 @@ import { useMap } from "react-leaflet";
 
 function MyComponent({ center }, { zoom }) {
   const map = useMap();
-  console.log("map center:", map.getCenter());
   map.setView(center, zoom);
   return null;
 }
