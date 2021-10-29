@@ -8,7 +8,7 @@ function EastButton(props) {
 
   return (
     <button onClick={moveEast}>
-      <i className="arrow" id="east" /> East
+      East <i className="arrow" id="east" />
     </button>
   );
 }
