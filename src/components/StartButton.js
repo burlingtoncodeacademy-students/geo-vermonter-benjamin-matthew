@@ -34,7 +34,7 @@ function StartButton(props) {
     // }
 
     console.log(newStartingLocation);
-    console.log(props.borderDataPassed)
+    console.log(props.borderDataPassed);
 
     // let myResults = leafletPip.pointInLayer(
     //   newStartingLocation,
@@ -53,6 +53,7 @@ function StartButton(props) {
     //     true
     //   );
     // }
+
     props.setLatitude(newLatitude);
     props.setLongitude(newLongitude);
     props.setStartingLatLon(newStartingLocation);
@@ -61,7 +62,13 @@ function StartButton(props) {
   // props.setStartGame(false);
 
   return !props.startGame ? (
-    <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>
+    <button
+      onClick={(evt) => {
+        props.setStartGame(true);
+      }}
+    >
+      Start Game
+    </button>
   ) : (
     <button disabled>Start Game</button>
   );
