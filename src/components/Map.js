@@ -5,12 +5,16 @@ import {
   Marker,
   Polyline,
 } from "react-leaflet";
+//importing the borderData and useMap
 import borderData from "../data/border";
 import { useMap } from "react-leaflet";
 
-function MyComponent({ center }, { zoom }) {
+
+//creating a function to reset the view (center and zoom) on the map using the useMap and setView methods imported from leaflet
+function MyComponent({ center, zoom }) {
   const map = useMap();
   map.setView(center, zoom);
+  console.log(zoom)
   return null;
 }
 
@@ -25,7 +29,7 @@ function Map(props) {
   return (
     <MapContainer
       center={props.center}
-      zoom={props.zoom}
+      zoom= {props.zoom}
       scrollWheelZoom={false}
       doubleClickZoom={false}
       zoomControl={false}
@@ -36,6 +40,7 @@ function Map(props) {
       zoomDelta={0}
       keyboard={false}
     >
+      {/* returning the created function with center and zoom */}
       <MyComponent center={props.center} zoom={props.zoom} />
       <TileLayer
         url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
