@@ -45,10 +45,10 @@ function App() {
             <div className="northSouth">
               <NorthButton setLatitude={setLatitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
               <div className="eastWest">
-                <WestButton setLongitude={setLongitude} setScore={setScore} />
-                <EastButton setLongitude={setLongitude} setScore={setScore} />
+                <WestButton setLongitude={setLongitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
+                <EastButton setLongitude={setLongitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
               </div>
-              <SouthButton setLatitude={setLatitude} setScore={setScore} />
+              <SouthButton setLatitude={setLatitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
             </div>
           </div>
           <div className="interactiveButtons">
