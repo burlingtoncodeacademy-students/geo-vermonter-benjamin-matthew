@@ -1,62 +1,42 @@
 import { divIcon } from "leaflet";
 import React, { useState, useEffect } from "react";
 import borderData from "../data/border";
-import leafletPip from "../../node_modules/leaflet-pip/index";
-require("leaflet-pip/index");
+import leafletPip from "leaflet-pip";
+import L from "leaflet";
+import { useMap } from "react-leaflet";
 
 function StartButton(props) {
-  // console.log(props.startGame);
   // if (!props.startGame) {
   //   return <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>;
   // }
+  let newLatitude;
+  let newLongitude;
+  let newStartingLocation;
 
   useEffect(() => {
-    // if (!props.startGame) {
-    //   return (
-    //     <button onClick={(evt) => props.setStartGame(true)}>Start Game</button>
-    //   );
-    // }
+    newLatitude = Math.random() * (45.005419 - 42.730315) + 42.730315;
 
-    let newLatitude = Math.random() * (45.005419 - 42.730315) + 42.730315;
-    // props.setLatitude(newLatitude);
+    newLongitude = Math.random() * (-71.510225 - -73.35218) + -73.35218;
 
-    let newLongitude = Math.random() * (-71.510225 - -73.35218) + -73.35218;
-    // props.setLongitude(newLongitude);
+    newStartingLocation = [newLatitude, newLongitude];
 
-    let newStartingLocation = [newLatitude, newLongitude];
-    // props.setStartingLatLon(newStartingLocation);
+    leafletPip.bassackwards = true;
+    let myResults = leafletPip.pointInLayer(
+      newStartingLocation,
+      L.geoJSON(props.borderDataPassed),
+      true
+    );
 
-    // if (props.startingLatLon === [0, 0]) {
-    //   randomLatGenerator();
-    //   randomLonGenerator();
-    //   props.setStartingLatLon([props.latitude, props.longitude]);
-    //   console.log(props.latitude);
-    // }
-
-    console.log(newStartingLocation);
-    console.log(props.borderDataPassed);
-
-    // let myResults = leafletPip.pointInLayer(
-    //   newStartingLocation,
-    //   props.borderDataPassed
-    // );
-
-    // console.log(myResults);
-
-    // while (myResults === []) {
-    //   newLatitude = Math.random() * (45.005419 - 42.730315) + 42.730315;
-    //   newLongitude = Math.random() * (-71.510225 - -73.35218) + -73.35218;
-    //   newStartingLocation = [newLatitude, newLongitude];
-    //   myResults = leafletPip.pointInLayer(
-    //     newStartingLocation,
-    //     props.borderDataPassed,
-    //     true
-    //   );
-    // }
-
-    props.setLatitude(newLatitude);
-    props.setLongitude(newLongitude);
-    props.setStartingLatLon(newStartingLocation);
+    while (myResults.length !== 1) {
+      newLatitude = Math.random() * (45.005419 - 42.730315) + 42.730315;
+      newLongitude = Math.random() * (-71.510225 - -73.35218) + -73.35218;
+      newStartingLocation = [newLatitude, newLongitude];
+      myResults = leafletPip.pointInLayer(
+        newStartingLocation,
+        L.geoJSON(props.borderDataPassed),
+        true
+      );
+    }
   }, []);
 
   // props.setStartGame(false);
@@ -65,6 +45,10 @@ function StartButton(props) {
     <button
       onClick={(evt) => {
         props.setStartGame(true);
+        props.setLatitude(newLatitude);
+        props.setLongitude(newLongitude);
+        props.setStartingLatLon(newStartingLocation);
+        props.setCenter(newStartingLocation);
       }}
     >
       Start Game

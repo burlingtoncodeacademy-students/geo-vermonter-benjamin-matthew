@@ -19,7 +19,7 @@ function App() {
   //put fetch in guess component
 
   let borderDataPassed = borderData;
-  console.log(borderDataPassed);
+
   return (
     <div>
       <header className="gameHeader">
@@ -40,7 +40,7 @@ function App() {
             <div className="northSouth">
               <button
                 onClick={() =>
-                  setLatitude((prevLatitude) => prevLatitude + 0.002)
+                  setLatitude((prevLatitude) => prevLatitude + 0.002) 
                 }
               >
                 North <i className="arrow" id="north" />
@@ -79,6 +79,7 @@ function App() {
               setStartingLatLon={setStartingLatLon}
               borderDataPassed={borderDataPassed}
               setZoom={setZoom}
+              setCenter={setCenter}
             />
             <button>Guess</button>
 
