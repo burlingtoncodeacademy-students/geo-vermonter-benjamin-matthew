@@ -8,6 +8,7 @@ import NorthButton from "./components/NorthButton";
 import WestButton from "./components/WestButton";
 import EastButton from "./components/EastButton";
 import SouthButton from "./components/SouthButton";
+import { map } from "leaflet";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -32,7 +33,7 @@ function App() {
       </header>
       <div id="gameContainer">
         <div id="playerScore">Player Score: {score}</div>
-        <Map center={center} zoom={zoom} />{" "}
+        <Map center={center} zoom={zoom} setCenter={setCenter} setZoom={setZoom} />{" "}
         <div className="info">
           <div id="lat">Lat: {latitude}</div>
           <div id="lon">Lon: {longitude}</div>
@@ -60,6 +61,7 @@ function App() {
               borderDataPassed={borderDataPassed}
               setZoom={setZoom}
               setCenter={setCenter}
+              map={map}
             />
             <button>Guess</button>
 

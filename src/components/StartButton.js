@@ -1,4 +1,4 @@
-import { divIcon } from "leaflet";
+import { divIcon, map } from "leaflet";
 import React, { useState, useEffect } from "react";
 import borderData from "../data/border";
 import leafletPip from "leaflet-pip";
@@ -49,6 +49,8 @@ function StartButton(props) {
         props.setLongitude(newLongitude);
         props.setStartingLatLon(newStartingLocation);
         props.setCenter(newStartingLocation);
+        props.setZoom(16)
+        // props.map.setCenter(newStartingLocation)
       }}
     >
       Start Game
