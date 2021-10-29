@@ -65,3 +65,9 @@ function StartButton(props) {
 export default StartButton;
 
 //update info class to be ???
+
+//set all equal to ???
+//set county
+//set town
+//set latitude
+//set longitude
