@@ -52,6 +52,7 @@ function App() {
                 setCenter={setCenter}
                 longitude={longitude}
                 latitude={latitude}
+                startGame={startGame}
               />
               <div className="eastWest">
                 <WestButton
@@ -60,6 +61,7 @@ function App() {
                   setCenter={setCenter}
                   longitude={longitude}
                   latitude={latitude}
+                  startGame={startGame}
                 />
                 <EastButton
                   setLongitude={setLongitude}
@@ -67,6 +69,7 @@ function App() {
                   setCenter={setCenter}
                   longitude={longitude}
                   latitude={latitude}
+                  startGame={startGame}
                 />
               </div>
               <SouthButton
@@ -75,6 +78,7 @@ function App() {
                 setCenter={setCenter}
                 longitude={longitude}
                 latitude={latitude}
+                startGame={startGame}
               />
             </div>
           </div>
@@ -94,7 +98,7 @@ function App() {
               Guess
             </button>
 
-            <Return setCenter={setCenter} startingLatLon={startingLatLon} />
+            <Return setCenter={setCenter} startingLatLon={startingLatLon} startGame={startGame} />
 
             {/* <button id="quitButton" className="gameplay-button">
               Quit Game
@@ -108,6 +112,7 @@ function App() {
               latitude={latitude}
               longitude={longitude}
               startingLatLon={startingLatLon}
+              startGame={startGame}
             />
           </div>
         </div>

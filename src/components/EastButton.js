@@ -7,7 +7,11 @@ function EastButton(props) {
     props.setCenter([props.latitude, props.longitude + 0.002]);
   };
 
-  return (
+  return !props.startGame ? (
+    <button className="directional-button west-east" disabled>
+      East <i className="arrow" id="east" />
+    </button>
+  ) : (
     <button className="directional-button west-east" onClick={moveEast}>
       East <i className="arrow" id="east" />
     </button>

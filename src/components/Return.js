@@ -2,10 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 function Return(props) {
-
-
-  return (
+  return !props.startGame ? (
+    <button disabled id="returnButton" className="gameplay-button">
+      Return to Starting Location
+    </button>
+  ) : (
     <button
+      id="returnButton"
+      className="gameplay-button"
       onClick={(evt) => {
         props.setCenter(props.startingLatLon);
       }}
@@ -15,7 +19,7 @@ function Return(props) {
   );
 }
 
-export default Return
+export default Return;
 
 //click return button
 //game scrolls back to starting point

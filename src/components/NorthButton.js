@@ -8,7 +8,11 @@ function NorthButton(props) {
     props.setCenter([props.latitude + 0.002, props.longitude]);
   };
 
-  return (
+  return !props.startGame ? (
+    <button className="directional-button" disabled>
+      North <i className="arrow" id="north" />
+    </button>
+  ) : (
     <button className="directional-button" onClick={moveNorth}>
       North <i className="arrow" id="north" />
     </button>

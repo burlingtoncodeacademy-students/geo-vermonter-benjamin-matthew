@@ -53,12 +53,12 @@ function StartButton(props) {
         props.setStartingLatLon(newStartingLocation);
         props.setCenter(newStartingLocation);
         props.setZoom(16);
-      }} id='startButton'
+      }} id='startButton' className='gameplay-button'
     >
       Start Game
     </button>
   ) : (
-    <button id='startButton' disabled>Start Game</button>
+    <button id='startButton' className='gameplay-button' disabled>Start Game</button>
   );
 }
 
