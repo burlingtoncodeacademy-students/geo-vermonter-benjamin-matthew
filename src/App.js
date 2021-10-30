@@ -29,26 +29,49 @@ function App() {
     <div>
       <header className="gameHeader">
         <h1 id="gameTitle">Geo-Vermont</h1>
-        <h4 id="createdBy">By: Benjamin & Matthew</h4>
+        {/* <h4 id="createdBy">By: Benjamin & Matthew</h4> */}
       </header>
       <div id="gameContainer">
         <div id="playerScore">Player Score: {score}</div>
-        <Map center={center} zoom={zoom} setCenter={setCenter} setZoom={setZoom} />{" "}
-        <div className="info">
-          <div id="lat">Lat: {latitude}</div>
-          <div id="lon">Lon: {longitude}</div>
-          <div id="county">County:</div>
-          <div id="town">Town:</div>
-        </div>
+        <Map
+          center={center}
+          zoom={zoom}
+          setCenter={setCenter}
+          setZoom={setZoom}
+        />{" "}
         <div className="userInputs">
           <div className="movementControl">
             <div className="northSouth">
-              <NorthButton setLatitude={setLatitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
+              <NorthButton
+                setLatitude={setLatitude}
+                setScore={setScore}
+                setCenter={setCenter}
+                longitude={longitude}
+                latitude={latitude}
+              />
               <div className="eastWest">
-                <WestButton setLongitude={setLongitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
-                <EastButton setLongitude={setLongitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
+                <WestButton
+                  setLongitude={setLongitude}
+                  setScore={setScore}
+                  setCenter={setCenter}
+                  longitude={longitude}
+                  latitude={latitude}
+                />
+                <EastButton
+                  setLongitude={setLongitude}
+                  setScore={setScore}
+                  setCenter={setCenter}
+                  longitude={longitude}
+                  latitude={latitude}
+                />
               </div>
-              <SouthButton setLatitude={setLatitude} setScore={setScore} setCenter={setCenter} longitude={longitude} latitude={latitude} />
+              <SouthButton
+                setLatitude={setLatitude}
+                setScore={setScore}
+                setCenter={setCenter}
+                longitude={longitude}
+                latitude={latitude}
+              />
             </div>
           </div>
           <div className="interactiveButtons">
@@ -63,9 +86,31 @@ function App() {
               setCenter={setCenter}
               map={map}
             />
-            <button id='guessButton'>Guess</button>
+            <button id="guessButton" className="gameplay-button">
+              Guess
+            </button>
 
-            <button id='quitButton'>Quit Game</button>
+            <button id="quitButton" className="gameplay-button">
+              Quit Game
+            </button>
+          </div>
+        </div>
+        <div className="info">
+          <div id="coordinates">
+            <div id="lat" className="info-text">
+              Lat: {+latitude.toFixed(3)}
+            </div>
+            <div id="lon" className="info-text">
+              Lon: {+longitude.toFixed(3)}
+            </div>
+          </div>
+          <div id="location">
+            <div id="county" className="info-text">
+              County: ???
+            </div>
+            <div id="town" className="info-text">
+              Town: ???
+            </div>
           </div>
         </div>
       </div>

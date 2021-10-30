@@ -1,14 +1,15 @@
 import React from "react";
+import "../App.css";
 
 function NorthButton(props) {
   const moveNorth = () => {
     props.setLatitude((prevLatitude) => prevLatitude + 0.002);
     props.setScore((prevScore) => prevScore - 1);
-    props.setCenter([(props.latitude + 0.002), props.longitude]);
+    props.setCenter([props.latitude + 0.002, props.longitude]);
   };
 
   return (
-    <button onClick={moveNorth}>
+    <button className="directional-button" onClick={moveNorth}>
       North <i className="arrow" id="north" />
     </button>
   );

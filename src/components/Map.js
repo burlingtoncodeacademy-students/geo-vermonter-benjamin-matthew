@@ -9,12 +9,11 @@ import {
 import borderData from "../data/border";
 import { useMap } from "react-leaflet";
 
-
 //creating a function to reset the view (center and zoom) on the map using the useMap and setView methods imported from leaflet
 function MyComponent({ center, zoom }) {
   const map = useMap();
   map.setView(center, zoom);
-  console.log(zoom)
+  console.log(zoom);
   return null;
 }
 
@@ -27,12 +26,16 @@ function Map(props) {
   return (
     <MapContainer
       center={props.center}
-      zoom= {props.zoom}
+      zoom={props.zoom}
       scrollWheelZoom={false}
       doubleClickZoom={false}
       zoomControl={false}
       touchZoom={false}
-      style={{ height: "600px", width: "600px" }}
+      style={{
+        height: "600px",
+        width: "600px",
+        border: "3px solid rgb(39, 38, 38, 1)",
+      }}
       //disabling the ability to drag the map and zoom
       dragging={false}
       zoomDelta={0}
