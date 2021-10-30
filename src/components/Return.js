@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 function Return(props) {
   return !props.startGame ? (
     <button disabled id="returnButton" className="gameplay-button">
-      Return to Starting Location
+      Return to Start
     </button>
   ) : (
     <button
@@ -14,7 +14,7 @@ function Return(props) {
         props.setCenter(props.startingLatLon);
       }}
     >
-      Return to Starting Location
+      Return to Start
     </button>
   );
 }
