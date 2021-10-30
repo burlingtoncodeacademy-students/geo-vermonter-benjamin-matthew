@@ -175,13 +175,65 @@ body {
   justify-content: center;
   z-index: 1;
 }
+
+#county-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#list-container {
+  display: flex;
+  justify-content: space-around;
+  height: 15em;
+}
+
+.county-title {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2em;
+}
+
+li {
+  font-size: 1.5em;
+}
+
 .insideModal {
   width: 50vw;
-  background-color: lightblue;
+  background-color: rgb(39, 38, 38, 1);
+  border-radius: 6px;
+  padding: 2em;
 }
+
+.userGuessField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3em;
+}
+
+#submit-guess {
+  background-color: darkolivegreen;
+  height: 2em;
+  width: 8em;
+  border-radius: 6px;
+  font-size: 1.25em;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: orange;
+  text-shadow: 1px 1px 1px black;
+}
+
+.user-input {
+  /* height: 3.25em; */
+  font-size: 1.87em;
+  width: 12em;
+  border-radius: 6px;
+  background-color: lightgrey;
+}
+
 .modalFooter {
   padding: 10px;
   display: flex;
+  justify-content: center;
 }
 #modal-title {
   text-align: center;
@@ -197,7 +249,14 @@ body {
   margin: auto;
 }
 #closeButton {
-  margin: auto;
+  background-color: darkolivegreen;
+  height: 2em;
+  width: 8em;
+  border-radius: 6px;
+  font-size: 1.25em;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: orange;
+  text-shadow: 1px 1px 1px black;
 }
 
 .leaflet-container {

@@ -13,6 +13,7 @@ import QuitGame from "./components/QuitGame";
 import Return from "./components/Return";
 import Info from "./components/Info";
 import Modal from "./components/Modal";
+import CountyList from "./components/CountyList";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);

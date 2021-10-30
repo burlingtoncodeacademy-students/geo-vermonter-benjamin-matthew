@@ -1,4 +1,5 @@
 import React from "react";
+import CountyList from "./CountyList";
 import GuessButton from "./GuessButton";
 
 function Modal(props) {
@@ -10,20 +11,17 @@ function Modal(props) {
     <div className="modal" onClick={props.closeModal}>
       {/* setting up a div that contains all the content of the modal and using an on click evt to stop the propagation of the closure from above at this level. It will not close if you click inside of here. Bubbling? */}
       <div className="insideModal" onClick={(evt) => evt.stopPropagation()}>
-        <div className="modalHeader">
+        {/* <div className="modalHeader">
           <h4 id="modalTitle">Take a Guess</h4>
-        </div>
-        <div className="modalBody">
-          <div className="userGuessField">
-            <input type="text" placeholder="Guess a County"></input>
-          </div>
-         LIST OF COUNTIES
-        </div>
+        </div> */}
+        <CountyList />
+        <GuessButton />
+        <div className="modalBody"></div>
         <div className="modalFooter">
           {/* calling close modal on click of this button */}
-          <GuessButton />
+          {/* <GuessButton /> */}
           <button onClick={props.closeModal} id="closeButton">
-            Close Modal
+            Cancel
           </button>
         </div>
       </div>
