@@ -12,7 +12,7 @@ import { map } from "leaflet";
 import QuitGame from "./components/QuitGame";
 import Return from "./components/Return";
 import Info from "./components/Info";
-import Guess from "./components/Guess";
+import Modal from "./components/Modal";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -25,7 +25,10 @@ function App() {
   const [town, setTown] = useState("");
 
   const [startGame, setStartGame] = useState(false);
-  const [endGame, setEndGame] = useState(false)
+  const [endGame, setEndGame] = useState(false);
+  //use state variables for the guessing modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const [playerGuess, setPlayerGuess] = useState("");
 
   //useeffect to fetch the information from the Nominatim API
   //put fetch in guess component
@@ -97,10 +100,17 @@ function App() {
               setCenter={setCenter}
               map={map}
             />
-            {/* <button id="guessButton" className="gameplay-button">
+            <button
+              id="guessButton"
+              className="gameplay-button"
+              onClick={(evt) => setModalOpen(true)}
+            >
               Guess
-            </button> */}
-
+            </button>
+            <Modal
+              closeModal={(evt) => setModalOpen(false)}
+              modalOpen={modalOpen}
+            />
             <Return
               setCenter={setCenter}
               startingLatLon={startingLatLon}
@@ -133,7 +143,6 @@ function App() {
           score={score}
         />
       </div>
-      <Guess />
     </div>
   );
 }
