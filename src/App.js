@@ -9,6 +9,8 @@ import WestButton from "./components/WestButton";
 import EastButton from "./components/EastButton";
 import SouthButton from "./components/SouthButton";
 import { map } from "leaflet";
+import QuitGame from "./components/QuitGame";
+import Return from "./components/Return";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -17,6 +19,8 @@ function App() {
   const [startingLatLon, setStartingLatLon] = useState([0, 0]);
   const [latitude, setLatitude] = useState(startingLatLon[0]);
   const [longitude, setLongitude] = useState(startingLatLon[1]);
+  const [county, setCounty] = useState("");
+  const [town, setTown] = useState("");
 
   const [startGame, setStartGame] = useState(false);
 
@@ -90,9 +94,21 @@ function App() {
               Guess
             </button>
 
-            <button id="quitButton" className="gameplay-button">
+            <Return setCenter={setCenter} startingLatLon={startingLatLon} />
+
+            {/* <button id="quitButton" className="gameplay-button">
               Quit Game
-            </button>
+            </button> */}
+            <QuitGame
+              county={county}
+              setCounty={setCounty}
+              setTown={setTown}
+              setLatitude={setLatitude}
+              setLongitude={setLongitude}
+              latitude={latitude}
+              longitude={longitude}
+              startingLatLon={startingLatLon}
+            />
           </div>
         </div>
         <div className="info">
@@ -106,10 +122,10 @@ function App() {
           </div>
           <div id="location">
             <div id="county" className="info-text">
-              County: ???
+              County: {county}
             </div>
             <div id="town" className="info-text">
-              Town: ???
+              Town: {town}
             </div>
           </div>
         </div>

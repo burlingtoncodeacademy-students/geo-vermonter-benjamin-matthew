@@ -8,29 +8,29 @@ function QuitGame(props) {
   //   props.setLatitude(startingLatLon[0]);
   //   props.setLongitude(startingLatLon[1]);
 
+  let newCounty
+  let newTown
   //create setState variables for county and town
-  useEffect(() => {
-    if (!county.length) {
+    if (props.county === '') {
       fetch(
-        `https://nominatim.openstreetmap.org/ui/reverse.html?lat=${props.latitude}&lon=${props.longitude}`
+        `https://nominatim.openstreetmap.org/reverse.php?lat=${props.startingLatLon[0]}&lon=${props.startingLatLon[1]}&zoom=18&format=jsonv2`
       )
         .then((res) => res.json())
         .then((nominatimArray) => {
-          setCounty(nominatimArray.county);
-          setTown(nominatimArray.village);
+          newCounty =(nominatimArray.address.county);
+          newTown = (nominatimArray.address.village);
         });
     }
-  });
 
   return (
     <button
       onClick={(evt) => {
-        props.setLatitude(startingLatLon[0]);
-        props.setLongitude(startingLatLon[1]);
-        setCounty(nominatimArray.county);
-        setTown(nominatimArray.village);
+        props.setLatitude(props.startingLatLon[0]);
+        props.setLongitude(props.startingLatLon[1]);
+        props.setCounty(newCounty);
+        props.setTown(newTown);
       }}
-      id="quitButton"
+      id="quitButton" className="gameplay-button"
     >
       Quit Game
     </button>
@@ -38,3 +38,9 @@ function QuitGame(props) {
 }
 
 export default QuitGame;
+
+//county
+//setCounty
+//setTown
+//setLatitude
+//setLongitude
