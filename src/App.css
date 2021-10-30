@@ -82,7 +82,7 @@ body {
   width: 50vw;
   justify-content: space-around;
   /* margin-bottom: 0.5em; */
-  margin-top: 0.5em;
+  /* margin-top: 0.5em; */
   border-radius: 6px;
   background-color: rgb(39, 38, 38, 1);
 }
@@ -121,7 +121,7 @@ body {
 
 .gameplay-button {
   background-color: darkolivegreen;
-  height: 2em;
+  height: 1.4em;
   width: 8em;
   border-radius: 6px;
   font-size: 1.25em;
