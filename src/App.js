@@ -11,6 +11,8 @@ import SouthButton from "./components/SouthButton";
 import { map } from "leaflet";
 import QuitGame from "./components/QuitGame";
 import Return from "./components/Return";
+import Info from "./components/Info";
+import Guess from "./components/Guess";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -23,6 +25,7 @@ function App() {
   const [town, setTown] = useState("");
 
   const [startGame, setStartGame] = useState(false);
+  const [endGame, setEndGame] = useState(false)
 
   //useeffect to fetch the information from the Nominatim API
   //put fetch in guess component
@@ -94,11 +97,15 @@ function App() {
               setCenter={setCenter}
               map={map}
             />
-            <button id="guessButton" className="gameplay-button">
+            {/* <button id="guessButton" className="gameplay-button">
               Guess
-            </button>
+            </button> */}
 
-            <Return setCenter={setCenter} startingLatLon={startingLatLon} startGame={startGame} />
+            <Return
+              setCenter={setCenter}
+              startingLatLon={startingLatLon}
+              startGame={startGame}
+            />
 
             {/* <button id="quitButton" className="gameplay-button">
               Quit Game
@@ -113,28 +120,20 @@ function App() {
               longitude={longitude}
               startingLatLon={startingLatLon}
               startGame={startGame}
+              setEndGame={setEndGame}
             />
           </div>
         </div>
-        <div className="info">
-          <div id="coordinates">
-            <div id="lat" className="info-text">
-              Lat: {+latitude.toFixed(3)}
-            </div>
-            <div id="lon" className="info-text">
-              Lon: {+longitude.toFixed(3)}
-            </div>
-          </div>
-          <div id="location">
-            <div id="county" className="info-text">
-              County: {county}
-            </div>
-            <div id="town" className="info-text">
-              Town: {town}
-            </div>
-          </div>
-        </div>
+        <Info
+          county={county}
+          town={town}
+          latitude={latitude}
+          longitude={longitude}
+          endGame={endGame}
+          score={score}
+        />
       </div>
+      <Guess />
     </div>
   );
 }
