@@ -12,6 +12,10 @@ function Return(props) {
       className="gameplay-button"
       onClick={(evt) => {
         props.setCenter(props.startingLatLon);
+        props.setLatitude(props.startingLatLon[0]);
+        props.setLongitude(props.startingLatLon[1])
+        props.setPolylineList([])
+        props.setPolylineListInitialized(false)
       }}
     >
       Return to Start

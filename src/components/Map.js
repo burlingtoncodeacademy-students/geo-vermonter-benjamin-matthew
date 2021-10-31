@@ -51,6 +51,7 @@ function Map(props) {
         positions={vtOutline}
         pathOptions={{ color: "orange", fillOpacity: 0 }}
       />
+      <Polyline positions={props.polylineList} pathOptions={{color: 'orange'}} dashArray={[5, 5]} />
     </MapContainer>
   );
 }

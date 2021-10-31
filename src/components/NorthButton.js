@@ -6,6 +6,7 @@ function NorthButton(props) {
     props.setLatitude((prevLatitude) => prevLatitude + 0.002);
     props.setScore((prevScore) => prevScore - 1);
     props.setCenter([props.latitude + 0.002, props.longitude]);
+    props.polylineUpdateNorth()
   };
 
   return !props.startGame ? (
@@ -20,3 +21,7 @@ function NorthButton(props) {
 }
 
 export default NorthButton;
+
+// onClick={(evt) => {
+//   props.setCenter(props.startingLatLon);
+// }}

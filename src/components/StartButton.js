@@ -40,6 +40,7 @@ function StartButton(props) {
         true
       );
     }
+    console.log(newStartingLocation)
   }, []);
 
   //return ternary that either gives a clickable button or a disabled button based on the boolean startGame being true or false

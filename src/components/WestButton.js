@@ -5,6 +5,7 @@ function WestButton(props) {
     props.setLongitude((prevLongitude) => prevLongitude - 0.002);
     props.setScore((prevScore) => prevScore - 1);
     props.setCenter([props.latitude, props.longitude - 0.002]);
+    props.polylineUpdateWest()
   };
 
   return !props.startGame ? (

@@ -31,19 +31,80 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   // const [playerGuess, setPlayerGuess] = useState("");
 
-  const [polylineList, setPolylineList] = useState([])
+  const [polylineList, setPolylineList] = useState([]);
+  const [polylineListInitialized, setPolylineListInitialized] = useState(false);
 
   let borderDataPassed = borderData;
 
-  // let guessDisabled = true
+  function polylineUpdateNorth() {
+    if (polylineListInitialized === false) {
+      setPolylineList((polylineList) => [...polylineList, startingLatLon]);
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0] + 0.002, center[1]],
+      ]);
+      setPolylineListInitialized(true);
+    } else {
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0] + 0.002, center[1]],
+      ]);
+    }
+  }
 
-  // if (startGame === true) {
-  //   guessDisabled = false
+  // function polylineUpdateSouth() {
+  //   if (center !== [43.88, -72.7317]) {
+  //     setPolylineList((polylineList) => [...polylineList, startingLatLon])
+  //     setPolylineList((polylineList) => [...polylineList, [center[0] - 0.002, center[1]]]);
+  //   } else {
+  //     return null;
+  //   }
   // }
-
-  // useEffect(() => {
-  //   setPolylineList(polylineList.push(center))
-  // }, [center, polylineList])
+  function polylineUpdateSouth() {
+    if (polylineListInitialized === false) {
+      setPolylineList((polylineList) => [...polylineList, startingLatLon]);
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0] - 0.002, center[1]],
+      ]);
+      setPolylineListInitialized(true);
+    } else {
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0] - 0.002, center[1]],
+      ]);
+    }
+  }
+  function polylineUpdateWest() {
+    if (polylineListInitialized === false) {
+      setPolylineList((polylineList) => [...polylineList, startingLatLon]);
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0], center[1] - 0.002],
+      ]);
+      setPolylineListInitialized(true);
+    } else {
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0], center[1] - 0.002],
+      ]);
+    }
+  }
+  function polylineUpdateEast() {
+    if (polylineListInitialized === false) {
+      setPolylineList((polylineList) => [...polylineList, startingLatLon]);
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0], center[1] + 0.002],
+      ]);
+      setPolylineListInitialized(true);
+    } else {
+      setPolylineList((polylineList) => [
+        ...polylineList,
+        [center[0], center[1] + 0.002],
+      ]);
+    }
+  }
 
   return (
     <div>
@@ -58,6 +119,7 @@ function App() {
           zoom={zoom}
           setCenter={setCenter}
           setZoom={setZoom}
+          polylineList={polylineList}
         />{" "}
         <div className="userInputs">
           <div className="northSouth">
@@ -68,6 +130,7 @@ function App() {
               longitude={longitude}
               latitude={latitude}
               startGame={startGame}
+              polylineUpdateNorth={polylineUpdateNorth}
             />
             <div className="eastWest">
               <WestButton
@@ -77,6 +140,7 @@ function App() {
                 longitude={longitude}
                 latitude={latitude}
                 startGame={startGame}
+                polylineUpdateWest={polylineUpdateWest}
               />
               <EastButton
                 setLongitude={setLongitude}
@@ -85,6 +149,7 @@ function App() {
                 longitude={longitude}
                 latitude={latitude}
                 startGame={startGame}
+                polylineUpdateEast={polylineUpdateEast}
               />
             </div>
             <SouthButton
@@ -94,6 +159,7 @@ function App() {
               longitude={longitude}
               latitude={latitude}
               startGame={startGame}
+              polylineUpdateSouth={polylineUpdateSouth}
             />
           </div>
 
@@ -144,7 +210,11 @@ function App() {
             <Return
               setCenter={setCenter}
               startingLatLon={startingLatLon}
+              setLatitude={setLatitude}
+              setLongitude={setLongitude}
               startGame={startGame}
+              setPolylineList={setPolylineList}
+              setPolylineListInitialized={setPolylineListInitialized}
             />
 
             {/* <button id="quitButton" className="gameplay-button">
