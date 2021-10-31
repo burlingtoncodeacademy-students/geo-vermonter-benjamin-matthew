@@ -13,6 +13,7 @@ import QuitGame from "./components/QuitGame";
 import Return from "./components/Return";
 import Info from "./components/Info";
 import Modal from "./components/Modal";
+import ModalButton from "./components/ModalButton";
 
 function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
@@ -30,10 +31,13 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   // const [playerGuess, setPlayerGuess] = useState("");
 
-  //useeffect to fetch the information from the Nominatim API
-  //put fetch in guess component
-
   let borderDataPassed = borderData;
+
+  // let guessDisabled = true
+
+  // if (startGame === true) {
+  //   guessDisabled = false
+  // }
 
   return (
     <div>
@@ -99,16 +103,37 @@ function App() {
               setCenter={setCenter}
               map={map}
             />
-            <button
+            {/* <button
               id="guessButton"
               className="gameplay-button"
               onClick={(evt) => setModalOpen(true)}
+              disabled = {guessDisabled}
             >
               Guess
-            </button>
+            </button> */}
+            <ModalButton
+              startGame={startGame}
+              setModalOpen={setModalOpen}
+              setLatitude={setLatitude}
+              setLongitude={setLongitude}
+              startingLatLon={startingLatLon}
+              county={county}
+              setCounty={setCounty}
+              setTown={setTown}
+            />
             <Modal
               closeModal={(evt) => setModalOpen(false)}
               modalOpen={modalOpen}
+              startGame={startGame}
+              county={county}
+              town={town}
+              setCounty={setCounty}
+              setTown={setTown}
+              startingLatLon={startingLatLon}
+              setScore={setScore}
+              score={score}
+              setEndGame={setEndGame}
+              setStartGame={setStartGame}
             />
             <Return
               setCenter={setCenter}

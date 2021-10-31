@@ -1,11 +1,17 @@
 import React from "react";
 import CountyList from "./CountyList";
 import GuessButton from "./GuessButton";
+import { useState } from "react";
 
 function Modal(props) {
+  const [newCounty, setNewCounty] = useState("");
+  const [newTown, setNewTown] = useState("");
+
   if (!props.modalOpen) {
     return null;
   }
+
+  console.log(props.county);
   return (
     //setting the modal class to have an on click to close the modal using props
     <div className="modal" onClick={props.closeModal}>
@@ -15,7 +21,14 @@ function Modal(props) {
           <h4 id="modalTitle">Take a Guess</h4>
         </div> */}
         <CountyList />
-        <GuessButton />
+        <GuessButton
+          county={props.county}
+          setScore={props.setScore}
+          score={props.score}
+          setEndGame={props.setEndGame}
+          closeModal={props.closeModal}
+          setStartGame={props.setStartGame}
+        />
         <div className="modalBody"></div>
         <div className="modalFooter">
           {/* calling close modal on click of this button */}
@@ -30,34 +43,3 @@ function Modal(props) {
 }
 
 export default Modal;
-
-// will use for guess functionality
-{
-  /* <StartGameModal closeModal={(evt) => setStartGame(false)} startGame={startGame} /> */
-}
-
-{
-  /* <button id="guessButton" className="gameplay-button">
-              Guess
-            </button> */
-}
-
-// return !props.startGame ? (
-//     <button id="quitButton" className="gameplay-button" disabled>
-//       Quit Game
-//     </button>
-//   ) : (
-//     <button
-//       onClick={(evt) => {
-//         props.setLatitude(props.startingLatLon[0]);
-//         props.setLongitude(props.startingLatLon[1]);
-//         props.setCounty(newCounty);
-//         props.setTown(newTown);
-//         props.setEndGame(true)
-//       }}
-//       id="quitButton"
-//       className="gameplay-button"
-//     >
-//       Quit Game
-//     </button>
-//   );
