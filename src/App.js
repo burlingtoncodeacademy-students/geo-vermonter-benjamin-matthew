@@ -31,6 +31,8 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   // const [playerGuess, setPlayerGuess] = useState("");
 
+  const [polylineList, setPolylineList] = useState([])
+
   let borderDataPassed = borderData;
 
   // let guessDisabled = true
@@ -38,6 +40,10 @@ function App() {
   // if (startGame === true) {
   //   guessDisabled = false
   // }
+
+  // useEffect(() => {
+  //   setPolylineList(polylineList.push(center))
+  // }, [center, polylineList])
 
   return (
     <div>

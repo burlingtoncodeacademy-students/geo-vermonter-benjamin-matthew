@@ -5,14 +5,28 @@ function ModalButton(props) {
   const [newCounty, setNewCounty] = useState("");
   const [newTown, setNewTown] = useState("");
 
-  fetch(
-    `https://nominatim.openstreetmap.org/reverse.php?lat=${props.startingLatLon[0]}&lon=${props.startingLatLon[1]}&zoom=18&format=jsonv2`
-  )
-    .then((res) => res.json())
-    .then((nominatimArray) => {
-      setNewCounty(nominatimArray.address.county);
-      setNewTown(nominatimArray.address.village);
-    });
+//   useEffect(() => {
+//         fetch(
+//     `https://nominatim.openstreetmap.org/reverse.php?lat=${props.startingLatLon[0]}&lon=${props.startingLatLon[1]}&zoom=18&format=jsonv2`
+//   )
+//     .then((res) => res.json())
+//     .then((nominatimArray) => {
+//       setNewCounty(nominatimArray.address.county);
+//       setNewTown(nominatimArray.address.village);
+//     });
+//   })
+
+useEffect(() => {
+    fetch(
+      `https://nominatim.openstreetmap.org/reverse.php?lat=${props.startingLatLon[0]}&lon=${props.startingLatLon[1]}&zoom=18&format=jsonv2`
+    )
+      .then((res) => res.json())
+      .then((nominatimArray) => {
+        setNewCounty(nominatimArray.address.county);
+        setNewTown(nominatimArray.address.village);
+      });
+  }, [props.startingLatLon])
+
 
   return !props.startGame ? (
     <button id="guessButton" className="gameplay-button" disabled>

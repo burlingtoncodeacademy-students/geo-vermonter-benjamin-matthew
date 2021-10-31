@@ -17,12 +17,14 @@ function GuessButton(props) {
   //display correct lat lon county town
 
   function guessCheck() {
-    if (playerGuess.toLowerCase() !== props.county.toLowerCase()) {
+    if (playerGuess.toLowerCase() + ' county' !== props.county.toLowerCase()) {
       props.setScore(props.score - 10)
+      setPlayerGuess('')
+      alert(`Incorrect Guess -10 Points.`)
     } else {
       props.setEndGame(true)
       props.closeModal()
-      alert (`Congrats! You answered correctly with ${props.county}.\nYou really know your trees!\nFinal score of ${props.score}`)
+      alert (`Congrats! You answered correctly with ${props.county}.\nYou really know your trees!\nFinal score of ${props.score}.`)
     }
   }
 

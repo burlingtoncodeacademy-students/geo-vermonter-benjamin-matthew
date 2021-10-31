@@ -13,7 +13,7 @@ function QuitGame(props) {
   // let newCounty;
   // let newTown;
   //create setState variables for county and town
-
+useEffect(() => {
   fetch(
     `https://nominatim.openstreetmap.org/reverse.php?lat=${props.startingLatLon[0]}&lon=${props.startingLatLon[1]}&zoom=18&format=jsonv2`
   )
@@ -22,6 +22,8 @@ function QuitGame(props) {
       setNewCounty(nominatimArray.address.county);
       setNewTown(nominatimArray.address.village);
     });
+}, [props.startingLatLon])
+
 
   return !props.startGame ? (
     <button id="quitButton" className="gameplay-button" disabled>
