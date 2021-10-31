@@ -50,36 +50,26 @@ function App() {
           setZoom={setZoom}
         />{" "}
         <div className="userInputs">
-          <div className="movementControl">
-            <div className="northSouth">
-              <NorthButton
-                setLatitude={setLatitude}
+          <div className="northSouth">
+            <NorthButton
+              setLatitude={setLatitude}
+              setScore={setScore}
+              setCenter={setCenter}
+              longitude={longitude}
+              latitude={latitude}
+              startGame={startGame}
+            />
+            <div className="eastWest">
+              <WestButton
+                setLongitude={setLongitude}
                 setScore={setScore}
                 setCenter={setCenter}
                 longitude={longitude}
                 latitude={latitude}
                 startGame={startGame}
               />
-              <div className="eastWest">
-                <WestButton
-                  setLongitude={setLongitude}
-                  setScore={setScore}
-                  setCenter={setCenter}
-                  longitude={longitude}
-                  latitude={latitude}
-                  startGame={startGame}
-                />
-                <EastButton
-                  setLongitude={setLongitude}
-                  setScore={setScore}
-                  setCenter={setCenter}
-                  longitude={longitude}
-                  latitude={latitude}
-                  startGame={startGame}
-                />
-              </div>
-              <SouthButton
-                setLatitude={setLatitude}
+              <EastButton
+                setLongitude={setLongitude}
                 setScore={setScore}
                 setCenter={setCenter}
                 longitude={longitude}
@@ -87,7 +77,16 @@ function App() {
                 startGame={startGame}
               />
             </div>
+            <SouthButton
+              setLatitude={setLatitude}
+              setScore={setScore}
+              setCenter={setCenter}
+              longitude={longitude}
+              latitude={latitude}
+              startGame={startGame}
+            />
           </div>
+
           <div className="interactiveButtons">
             <StartButton
               startGame={startGame}

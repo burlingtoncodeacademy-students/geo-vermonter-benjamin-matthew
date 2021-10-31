@@ -6,6 +6,7 @@
   font-size: 16px;
 }
 
+/* Styling for body */
 body {
   background: rgb(51, 51, 51);
   background: linear-gradient(
@@ -19,6 +20,7 @@ body {
   color: orange;
 }
 
+/* Header styling */
 .gameHeader {
   display: flex;
   height: 7vh;
@@ -32,22 +34,15 @@ body {
 
 #gameTitle {
   font-size: 3em;
-  /* margin: 20px 0px; */
 }
 
-#createdBy {
-  font-size: 2vw;
-  margin: 0px;
-  padding-bottom: 10px;
-}
-
+/* Game container stying */
 #gameContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: fit-content;
-  /* border: 5px solid black; */
 }
 
 #playerScore {
@@ -61,52 +56,16 @@ body {
   margin-bottom: 0.25em;
 }
 
-.info {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.25em;
-  max-width: 600px;
-  width: 50vw;
-  /* margin-top: 0.5em; */
-  /* background-color: rgb(253, 166, 4, 0.7);
-  border: 2px solid black;
-  filter: drop-shadow(3px 3px 3px solid black); */
-  border-radius: 5px;
-  background-color: rgb(39, 38, 38, 1);
-}
-
+/* styling for user input div. contains all button styling on main page */
 .userInputs {
   display: flex;
   flex-direction: row;
+  min-width: 600px;
   max-width: 600px;
   width: 50vw;
   justify-content: space-around;
-  /* margin-bottom: 0.5em; */
-  /* margin-top: 0.5em; */
   border-radius: 6px;
   background-color: rgb(39, 38, 38, 1);
-}
-
-/* #location {
-  padding-right: 8em;
-} */
-
-.info-text {
-  font-size: 1.5em;
-  color: orange;
-}
-.movementControl {
-  display: flex;
-  flex-direction: column;
-}
-
-.northSouth {
-  display: flex;
-  flex-direction: column;
-}
-
-.northSouth > button {
-  margin: 5px 0px;
 }
 
 .directional-button {
@@ -130,6 +89,15 @@ body {
   text-shadow: 1px 1px 1px black;
 }
 
+.northSouth {
+  display: flex;
+  flex-direction: column;
+}
+
+.northSouth > button {
+  margin: 0.25em 0px;
+}
+
 .west-east {
   width: 6em;
 }
@@ -140,29 +108,24 @@ body {
   justify-content: space-around;
 }
 
-/* .arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-} */
-
-#north {
-  transform: rotate(-135deg);
+/* styling for info div and lat/lon/county/town */
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25em;
+  min-width: 600px;
+  max-width: 600px;
+  width: 50vw;
+  border-radius: 5px;
+  background-color: rgb(39, 38, 38, 1);
 }
 
-#south {
-  transform: rotate(45deg);
+.info-text {
+  font-size: 1.5em;
+  color: orange;
 }
 
-#east {
-  transform: rotate(-45deg);
-}
-
-#west {
-  transform: rotate(135deg);
-}
-
+/* styling for guess modal and contents */
 .modal {
   position: fixed;
   left: 0;
@@ -176,9 +139,19 @@ body {
   z-index: 1;
 }
 
+.insideModal {
+  width: 50vw;
+
+  background-color: rgb(39, 38, 38, 1);
+  border-radius: 6px;
+  padding: 2em;
+}
+
+/* styling for county list inside modal */
 #county-container {
   display: flex;
   flex-direction: column;
+  text-shadow: 1px 1px 1px black;
 }
 
 #list-container {
@@ -197,13 +170,7 @@ li {
   font-size: 1.5em;
 }
 
-.insideModal {
-  width: 50vw;
-  background-color: rgb(39, 38, 38, 1);
-  border-radius: 6px;
-  padding: 2em;
-}
-
+/* sytling for submit button and user input */
 .userGuessField {
   display: flex;
   justify-content: space-around;
@@ -224,32 +191,20 @@ li {
 }
 
 .user-input {
-  /* height: 3.25em; */
   font-size: 1.87em;
   width: 12em;
   border-radius: 6px;
   background-color: lightgrey;
 }
 
+/* styling for footer and close modal button */
 .modalFooter {
   display: flex;
   justify-content: center;
   padding: 10px;
   margin-top: 1em;
 }
-#modal-title {
-  text-align: center;
-}
-.modalBody {
-  text-align: center;
-}
-.container {
-  padding: 50px;
-  text-align: center;
-}
-#openButton {
-  margin: auto;
-}
+
 #closeButton {
   background-color: darkolivegreen;
   height: 2em;
