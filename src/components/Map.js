@@ -16,6 +16,7 @@ function MyComponent({ center, zoom }) {
   return null;
 }
 
+//creating the map functional component
 function Map(props) {
   let vtOutline = borderData.geometry.coordinates[0].map((coords) => [
     coords[1],
@@ -23,6 +24,7 @@ function Map(props) {
   ]);
 
   return (
+    //setting the map containers default values by passing in the center and zoom with props
     <MapContainer
       center={props.center}
       zoom={props.zoom}
@@ -51,7 +53,12 @@ function Map(props) {
         positions={vtOutline}
         pathOptions={{ color: "orange", fillOpacity: 0 }}
       />
-      <Polyline positions={props.polylineList} pathOptions={{color: 'orange'}} dashArray={[5, 5]} />
+      {/* setting up the polyline by passing in the polylinelist array and setting the color to orange and setting the dashArray */}
+      <Polyline
+        positions={props.polylineList}
+        pathOptions={{ color: "orange" }}
+        dashArray={[5, 5]}
+      />
     </MapContainer>
   );
 }

@@ -1,15 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+//setting up a check on the game state to see if either the score has gone below 0 or the endGame boolean is true
 function gameStateCheck(props) {
-    if(props.endGame === true || props.score === 0) {
-        return true
-    } else {
-        return false
-    }
+  if (props.endGame === true || props.score <= 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
+//creating functional component info to either display or hide the information based on the gamestatecheck function above
 function Info(props) {
+  //ternary returns either the ??? if the game is not over or the correct information
   return !gameStateCheck(props) ? (
     <div className="info">
       <div id="coordinates">
@@ -52,49 +55,3 @@ function Info(props) {
 }
 
 export default Info;
-
-{
-  /* <div className="info">
-  <div id="coordinates">
-    <div id="lat" className="info-text">
-      Lat: {+latitude.toFixed(3)}
-    </div>
-    <div id="lon" className="info-text">
-      Lon: {+longitude.toFixed(3)}
-    </div>
-  </div>
-  <div id="location">
-    <div id="county" className="info-text">
-      County: {county}
-    </div>
-    <div id="town" className="info-text">
-      Town: {town}
-    </div>
-  </div>
-</div>; */
-}
-
-// function Return(props) {
-//   return !props.startGame ? (
-//     <button disabled id="returnButton" className="gameplay-button">
-//       Return to Start
-//     </button>
-//   ) : (
-//     <button
-//       id="returnButton"
-//       className="gameplay-button"
-//       onClick={(evt) => {
-//         props.setCenter(props.startingLatLon);
-//       }}
-//     >
-//       Return to Start
-//     </button>
-//   );
-// }
-
-// export default Return;
-
-// //click return button
-// //game scrolls back to starting point
-
-// //disable buttons based on if startGame is true using ternary similar to start button

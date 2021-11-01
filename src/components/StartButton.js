@@ -40,13 +40,14 @@ function StartButton(props) {
         true
       );
     }
-    console.log(newStartingLocation)
+    console.log(newStartingLocation);
   }, []);
 
   //return ternary that either gives a clickable button or a disabled button based on the boolean startGame being true or false
   //the onClick changes the start game to true, and updates the latitude, longitude, starting location, center, and zoom using the set states
   return !props.startGame ? (
     <button
+      // onclick evt handler to set the correct starting coordinates, change zoom, and toggle the boolean for game starting
       onClick={(evt) => {
         props.setStartGame(true);
         props.setLatitude(newLatitude);
@@ -54,21 +55,17 @@ function StartButton(props) {
         props.setStartingLatLon(newStartingLocation);
         props.setCenter(newStartingLocation);
         props.setZoom(16);
-      }} id='startButton' className='gameplay-button'
+      }}
+      id="startButton"
+      className="gameplay-button"
     >
       Start Game
     </button>
   ) : (
-    <button id='startButton' className='gameplay-button' disabled>Start Game</button>
+    <button id="startButton" className="gameplay-button" disabled>
+      Start Game
+    </button>
   );
 }
 
 export default StartButton;
-
-//update info class to be ???
-
-//set all equal to ???
-//set county
-//set town
-//set latitude
-//set longitude
