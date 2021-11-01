@@ -34,6 +34,8 @@ function QuitGame(props) {
         props.setLongitude(props.startingLatLon[1]);
         props.setCounty(newCounty);
         props.setTown(newTown);
+        props.setZoom(8)
+        props.setCenter(props.startingLatLon)
         props.setEndGame(true);
       }}
       id="quitButton"

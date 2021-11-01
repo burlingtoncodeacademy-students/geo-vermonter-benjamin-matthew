@@ -21,6 +21,8 @@ function GuessButton(props) {
     } else {
       props.setEndGame(true);
       props.closeModal();
+      props.setZoom(8)
+      props.setCenter(props.startingLatLon)
       alert(
         `Congrats! You answered correctly with ${props.county}.\nYou really know your trees!\nFinal score of ${props.score}.`
       );

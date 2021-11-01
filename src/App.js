@@ -15,9 +15,11 @@ import Info from "./components/Info";
 import Modal from "./components/Modal";
 import ModalButton from "./components/ModalButton";
 
+// creating functional component App
 function App() {
+  // setting up useState variables
   const [center, setCenter] = useState([43.88, -72.7317]);
-  const [score, setScore] = useState("100");
+  const [score, setScore] = useState(100);
   const [zoom, setZoom] = useState(8);
   const [startingLatLon, setStartingLatLon] = useState([0, 0]);
   const [latitude, setLatitude] = useState(startingLatLon[0]);
@@ -29,21 +31,32 @@ function App() {
   const [endGame, setEndGame] = useState(false);
   //use state variables for the guessing modal
   const [modalOpen, setModalOpen] = useState(false);
-  // const [playerGuess, setPlayerGuess] = useState("");
 
+  // useState variables for the polyline
   const [polylineList, setPolylineList] = useState([]);
   const [polylineListInitialized, setPolylineListInitialized] = useState(false);
 
+  // setting global variable for the border data
   let borderDataPassed = borderData;
 
+  // if check that alerts game over and reloads on score hitting 0
+  if (score <= 0) {
+    alert(`Game Over!`);
+    window.location.reload(false);
+  }
+
+  // creating functions to update the polyline array list
   function polylineUpdateNorth() {
+    // if check handles the first move from the original lat/lon and then sets a boolean to true that forces the else
     if (polylineListInitialized === false) {
       setPolylineList((polylineList) => [...polylineList, startingLatLon]);
+      // new point created using the center array and adding the correct movement distance
       setPolylineList((polylineList) => [
         ...polylineList,
         [center[0] + 0.002, center[1]],
       ]);
       setPolylineListInitialized(true);
+      // else only sets the polyline point from the current center point
     } else {
       setPolylineList((polylineList) => [
         ...polylineList,
@@ -51,15 +64,6 @@ function App() {
       ]);
     }
   }
-
-  // function polylineUpdateSouth() {
-  //   if (center !== [43.88, -72.7317]) {
-  //     setPolylineList((polylineList) => [...polylineList, startingLatLon])
-  //     setPolylineList((polylineList) => [...polylineList, [center[0] - 0.002, center[1]]]);
-  //   } else {
-  //     return null;
-  //   }
-  // }
   function polylineUpdateSouth() {
     if (polylineListInitialized === false) {
       setPolylineList((polylineList) => [...polylineList, startingLatLon]);
@@ -110,10 +114,10 @@ function App() {
     <div>
       <header className="gameHeader">
         <h1 id="gameTitle">Geo-Vermont</h1>
-        {/* <h4 id="createdBy">By: Benjamin & Matthew</h4> */}
       </header>
       <div id="gameContainer">
         <div id="playerScore">Player Score: {score}</div>
+        {/* calling the map and passing the useState variables needed */}
         <Map
           center={center}
           zoom={zoom}
@@ -123,6 +127,7 @@ function App() {
         />{" "}
         <div className="userInputs">
           <div className="northSouth">
+            {/* calling the north button and passing the useState variables needed */}
             <NorthButton
               setLatitude={setLatitude}
               setScore={setScore}
@@ -133,6 +138,7 @@ function App() {
               polylineUpdateNorth={polylineUpdateNorth}
             />
             <div className="eastWest">
+              {/* calling the west and east and passing the useState variables needed */}
               <WestButton
                 setLongitude={setLongitude}
                 setScore={setScore}
@@ -152,6 +158,7 @@ function App() {
                 polylineUpdateEast={polylineUpdateEast}
               />
             </div>
+            {/* calling the south button and passing the useState variables needed */}
             <SouthButton
               setLatitude={setLatitude}
               setScore={setScore}
@@ -164,6 +171,7 @@ function App() {
           </div>
 
           <div className="interactiveButtons">
+            {/* calling the start button and passing the useState variables needed */}
             <StartButton
               startGame={startGame}
               setStartGame={setStartGame}
@@ -175,14 +183,7 @@ function App() {
               setCenter={setCenter}
               map={map}
             />
-            {/* <button
-              id="guessButton"
-              className="gameplay-button"
-              onClick={(evt) => setModalOpen(true)}
-              disabled = {guessDisabled}
-            >
-              Guess
-            </button> */}
+            {/* calling the modal button and passing the useState variables needed */}
             <ModalButton
               startGame={startGame}
               setModalOpen={setModalOpen}
@@ -193,6 +194,7 @@ function App() {
               setCounty={setCounty}
               setTown={setTown}
             />
+            {/* calling the modal and passing the useState variables needed */}
             <Modal
               closeModal={(evt) => setModalOpen(false)}
               modalOpen={modalOpen}
@@ -206,7 +208,10 @@ function App() {
               score={score}
               setEndGame={setEndGame}
               setStartGame={setStartGame}
+              setCenter={setCenter}
+              setZoom={setZoom}
             />
+            {/* calling the return button and passing the useState variables needed */}
             <Return
               setCenter={setCenter}
               startingLatLon={startingLatLon}
@@ -216,10 +221,7 @@ function App() {
               setPolylineList={setPolylineList}
               setPolylineListInitialized={setPolylineListInitialized}
             />
-
-            {/* <button id="quitButton" className="gameplay-button">
-              Quit Game
-            </button> */}
+            {/* calling the quit game button and passing the useState variables needed */}
             <QuitGame
               county={county}
               setCounty={setCounty}
@@ -231,9 +233,12 @@ function App() {
               startingLatLon={startingLatLon}
               startGame={startGame}
               setEndGame={setEndGame}
+              setCenter={setCenter}
+              setZoom={setZoom}
             />
           </div>
         </div>
+        {/* calling the info and passing the useState variables needed */}
         <Info
           county={county}
           town={town}

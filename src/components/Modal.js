@@ -27,6 +27,9 @@ function Modal(props) {
           setEndGame={props.setEndGame}
           closeModal={props.closeModal}
           setStartGame={props.setStartGame}
+          setZoom={props.setZoom}
+          setCenter={props.setCenter}
+          startingLatLon={props.startingLatLon}
         />
         <div className="modalBody"></div>
         <div className="modalFooter">

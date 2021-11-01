@@ -30,11 +30,9 @@ function ModalButton(props) {
     <button
       id="guessButton"
       className="gameplay-button"
-      // onClick evt to open the modal, reset lat and lon, set the county, and set the town
+      // onClick evt to open the modal, set the county, and set the town
       onClick={(evt) => {
         props.setModalOpen(true);
-        props.setLatitude(props.startingLatLon[0]);
-        props.setLongitude(props.startingLatLon[1]);
         props.setCounty(newCounty);
         props.setTown(newTown);
       }}
