@@ -3,31 +3,31 @@ import React, { useState } from "react";
 function GuessButton(props) {
   const [playerGuess, setPlayerGuess] = useState("");
 
-  let playerGuessFinal
+  //function to prevent default function of submit button. calls guessCheck()
   const guessSubmit = (evt) => {
     evt.preventDefault();
-    console.log(playerGuess);
-    console.log(props.county)
-    guessCheck()
+    guessCheck();
   };
 
-  //a function to handle player guess on click of the form
-  //pull in the county and town from the fetch API and compare
-  //pull in setScore to update
-  //display correct lat lon county town
-
+  // checks if player guess correctly matches the county where the game started.
   function guessCheck() {
-    if (playerGuess.toLowerCase() + ' county' !== props.county.toLowerCase()) {
-      props.setScore(props.score - 10)
-      setPlayerGuess('')
-      alert(`Incorrect Guess -10 Points.`)
+    // subtracts 10 points if player guess is incorrect
+    if (playerGuess.toLowerCase() + " county" !== props.county.toLowerCase()) {
+      props.setScore(props.score - 10);
+      setPlayerGuess("");
+      alert(`Incorrect Guess -10 Points.`);
+
+      // ends game, closes modal, alerts player of the correct answer and their final score
     } else {
-      props.setEndGame(true)
-      props.closeModal()
-      alert (`Congrats! You answered correctly with ${props.county}.\nYou really know your trees!\nFinal score of ${props.score}.`)
+      props.setEndGame(true);
+      props.closeModal();
+      alert(
+        `Congrats! You answered correctly with ${props.county}.\nYou really know your trees!\nFinal score of ${props.score}.`
+      );
     }
   }
 
+  // returns form including text input for player guess and submit button that targets input. sets player guess state
   return (
     <div className="userGuessField">
       <form onSubmit={guessSubmit}>
@@ -35,7 +35,9 @@ function GuessButton(props) {
           className="user-input"
           type="text"
           value={playerGuess}
-          onChange={(evt) => {setPlayerGuess(evt.target.value)}}
+          onChange={(evt) => {
+            setPlayerGuess(evt.target.value);
+          }}
         />
 
         <input id="submit-guess" type="submit" value="Submit" />
