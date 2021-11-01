@@ -1,5 +1,6 @@
 import React from "react";
 
+//list of Vermont counties to choose from for guess
 function CountyList() {
   return (
     <div id="county-container">
